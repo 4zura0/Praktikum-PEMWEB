@@ -1,0 +1,36 @@
+body{
+    background-color: lightblue;
+    align-items: center;
+}
+
+h2{
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+table {
+    margin: 0 auto;
+    width: 500px;
+  }
+  
+.pesanan{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px 100px;
+    margin: 10px;
+}
+
+.daftarPesanan{
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    text-align: left;
+    padding: 50px 100px;
+    margin: 10px;
+}

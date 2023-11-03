@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="posttest6.css">
+    <title>PostTest6</title>
+</head>
+<body>
+    <table>
+        <td>
+            <h2><strong>Selamat datang, buddy!</strong></h2>
+            <h3>pesan disini ya</h3>
+            <div class="pesanan">
+                <form name="formMakanan" action="proses.php" method="get" onsubmit="hitungTotal(); return false;">
+                    <label for="menu">Menu :
+                        <select name="menu" id="menu">
+                            <option value="0"> </option>
+                            <option value="95000">Chicken Spicy + Lychee Float</option>
+                            <option value="70000">Double Cheese Egg + Coca-cola</option>
+                            <option value="50000">PaNas + Fruittea</option>
+                            <option value="27000">Fries</option>
+                            <option value="25000">Spaghetty Mini</option>
+                        </select>
+                    </label>
+                    <br><br>
+                    <label for="jumlah">Jumlah : </label>
+                    <input type="text" id="jumlah" name="jumlah"><br><br>
+
+                    <label for="voucher">Voucher : </label>
+                    <input type="text" id="voucher" name="voucher"><br><br>
+
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </td>
+    </table>
+
+    <table>
+        <td>    
+            <div class="daftarPesanan">
+                <table>
+                    <tr>
+                        <th>Nama Pesanan : </th>
+                        <td id="namaPesanan"></td>
+                    </tr>
+                    <tr>
+                        <th>Jumlah Pesanan : </th>
+                        <td id="jumlahPesanan"></td>
+                    </tr>
+                    <tr>
+                        <th>Total Diskon : </th>
+                        <td id="totalDiskon"></td>
+                    </tr>
+                    <tr>
+                        <th>Total Harga : </th>
+                        <td id="totalHarga"></td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </table>
+</body>
+</html>
+
+<script>
+    function hitungTotal() {
+        var makananPilihan = document.getElementById("menu");
+        var inputJumlah = document.getElementById("jumlah");
+        var inputVoucher = document.getElementById("voucher");
+
+        var namaPesanan = makananPilihan.options[makananPilihan.selectedIndex].text;
+        var jumlahPesanan = parseInt(inputJumlah.value);
+        var hargaPerItem = parseInt(makananPilihan.value);
+        var totalHarga = jumlahPesanan * hargaPerItem;
+
+        //menghitung diskon
+        var diskon = 0;
+        if (inputVoucher.value === "gevangituloh") {
+            diskon = totalHarga * 0.2;
+        }else{
+            "tidak dapat diskon kakak"
+        }
+        var totalDiskon = diskon;
+        totalHarga = totalHarga-diskon;
+
+        document.getElementById("namaPesanan").textContent = namaPesanan;
+        document.getElementById("jumlahPesanan").textContent = jumlahPesanan;
+        document.getElementById("totalDiskon").textContent = diskon;
+        document.getElementById("totalHarga").textContent = totalHarga;
+    }
+</script>
