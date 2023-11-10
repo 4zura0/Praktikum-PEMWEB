@@ -1,0 +1,99 @@
+* {
+  box-sizing: border-box;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.body {
+  font-family: sans-serif;
+  background-color: #ffffff;
+}
+body.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+
+.normal-mode {
+  background-color: #ffffff;
+}
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 6% 15%;
+}
+
+.game {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.btn {
+  padding: 15px 18px;
+  margin: 30px auto auto auto;
+  width: 120px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background: rgb(191, 191, 191);
+  cursor: pointer;
+}
+
+.btn-toggle {
+  padding: 15px 18px;
+  margin: 30px auto auto auto;
+  width: auto;
+  font-size: 18px;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  background: rgb(191, 191, 191);
+  cursor: pointer;
+}
+
+.btn-toggle:hover {
+  transition-duration: 0.3s;
+  background-color: rgb(8, 8, 8);
+  transform: translateY(-5px);
+}
+.btn:hover {
+  transition-duration: 0.3s;
+  background-color: rgb(13, 13, 13);
+  transform: translateY(-5px);
+}
+
+
+
+.cell {
+  width: 150px;
+  height: 150px;
+  margin: 8px 8px;
+  border-radius: 15px;
+  background-color: rgb(148, 148, 148);
+  text-align: center;
+  font-size: 120px;
+}
+
+.cell:hover {
+  transition-duration: 0.3s;
+  background-color: darkgrey;
+  transform: translateY(-5px);
+}
+
+#game-text {
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: -10px auto 25px auto;
+}
+
+#winning-text {
+  text-align: center;
+  margin-bottom: -20px;
+  font-size: 20px;
+  color: pink;
+}

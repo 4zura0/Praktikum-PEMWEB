@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TIC TAC TOE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="game-board">
+    <center><h1>Tic-Tac-Toe</h1></center>
+    <button id="toggleDarkMode" class="btn-toggle">Toggle Dark Mode</button>
+    <div id="game-text"></div>
+    <div class="game">
+        <div class="cell" id="0"></div>
+        <div class="cell" id="1"></div>
+        <div class="cell" id="2"></div>
+        <div class="cell" id="3"></div>
+        <div class="cell" id="4"></div>
+        <div class="cell" id="5"></div>
+        <div class="cell" id="6"></div>
+        <div class="cell" id="7"></div>
+        <div class="cell" id="8"></div>
+    </div>
+    <button class="btn" id="restart">Reset</button>
+  </section>
+  <script>
+   function darkMode() {
+   var element = document.body
+   element.classList.toggle("dark-mode");
+   element.classList.toggle("normal-mode");
+   }
+    const cells = document.querySelectorAll(".cell");
+    const playText = document.getElementById("game-text");
+    const restartBtn = document.getElementById("restart");
+    document.getElementById("toggleDarkMode").addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
+    });
+    
+    const spaces = [];
+    const OPlayer = "O";
+    const XPlayer = "X";
+    let currentPlayer;
+    
+    function handleClick(e) {
+        const id = e.target.id;
+        if (!spaces[id]) {
+            spaces[id] = currentPlayer;
+    
+            console.log('[' + spaces.slice(0, 3) + ']\n[' + spaces.slice(3, 6) + ']\n[' + spaces.slice(6) + ']');
+            e.target.innerText = currentPlayer;
+    
+            if (playerWon(currentPlayer)) {
+                const winningAlert = document.createElement("p");
+                winningAlert.setAttribute("id", "winning-text");
+                winningAlert.innerText = `${currentPlayer} Menang!`;
+                playText.appendChild(winningAlert);
+
+    
+                setTimeout(() => {
+                    restart();
+                }, 3000);
+                return;
+                window.location.reload();
+            }
+            currentPlayer = currentPlayer === OPlayer ? XPlayer : OPlayer;
+        }
+    }
+    
+    cells.forEach((cell) => {
+        cell.addEventListener("click", handleClick);
+    });
+    
+    const playerWon = (player) => {
+        if (spaces[0] === player) {
+            if (spaces[1] === player && spaces[2] === player) return true;
+            if (spaces[3] === player && spaces[6] === player) return true;
+            if (spaces[4] === player && spaces[8] === player) return true;
+        }
+        if (spaces[8] === player) {
+            if (spaces[2] === player && spaces[5] === player) return true;
+            if (spaces[6] === player && spaces[7] === player) return true;
+        }
+        if (spaces[4] === player) {
+            if (spaces[1] === player && spaces[7] === player) return true;
+            if (spaces[3] === player && spaces[5] === player) return true;
+            if (spaces[2] === player && spaces[6] === player) return true;
+        }
+    };
+    
+    const restart = () => {
+        spaces.forEach((space, index) => {
+            console.log(space);
+            spaces[index] = null;
+        });
+        playText.innerHTML = "";
+        cells.forEach((cell) => {
+            cell.innerText = "";
+        });
+        currentPlayer = OPlayer;
+    };
+    restartBtn.addEventListener("click", restart);
+    
+    restart();
+    </script>
+</body>
+</html>
